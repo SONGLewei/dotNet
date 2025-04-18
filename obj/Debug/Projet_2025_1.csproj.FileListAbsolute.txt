@@ -1,0 +1,92 @@
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\Projet_2025_1.exe.config
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\Projet_2025_1.exe
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\Projet_2025_1.pdb
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.AssemblyReference.cache
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.MainForm.resources
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.Properties.Resources.resources
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.GenerateResource.cache
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.CoreCompileInputs.cache
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.exe
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.pdb
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.ImageManagerForm.resources
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.SearchForm.resources
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2025_1.TagManagerForm.resources
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\BouncyCastle.Cryptography.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\Google.Protobuf.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\K4os.Compression.LZ4.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\K4os.Hash.xxHash.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\MySql.Data.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Buffers.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.IO.Pipelines.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Memory.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Numerics.Vectors.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\ZstdSharp.dll
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\BouncyCastle.Cryptography.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\Google.Protobuf.pdb
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\Google.Protobuf.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\K4os.Compression.LZ4.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\K4os.Hash.xxHash.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\MySql.Data.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Buffers.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.IO.Pipelines.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Memory.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Numerics.Vectors.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\M1\NET\work_space\Projet_2025_1\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\M1\NET\work_space\Projet_2025_1\obj\Debug\Projet_2.1A79E13A.Up2Date
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\Projet_2025_1.exe.config
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\Projet_2025_1.exe
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\Projet_2025_1.pdb
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\BouncyCastle.Cryptography.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\Google.Protobuf.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\K4os.Compression.LZ4.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\K4os.Hash.xxHash.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\MySql.Data.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Buffers.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.IO.Pipelines.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Memory.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Numerics.Vectors.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\ZstdSharp.dll
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\BouncyCastle.Cryptography.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\Google.Protobuf.pdb
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\Google.Protobuf.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\K4os.Compression.LZ4.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\K4os.Hash.xxHash.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\MySql.Data.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Buffers.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.IO.Pipelines.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Memory.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Numerics.Vectors.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.AssemblyReference.cache
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.ImageManagerForm.resources
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.MainForm.resources
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.Properties.Resources.resources
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.SearchForm.resources
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.TagManagerForm.resources
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.GenerateResource.cache
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.CoreCompileInputs.cache
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2.1A79E13A.Up2Date
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.exe
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.pdb
