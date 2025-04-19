@@ -87,6 +87,6 @@ D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.SearchForm
 D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.TagManagerForm.resources
 D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.GenerateResource.cache
 D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.CoreCompileInputs.cache
-D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2.1A79E13A.Up2Date
 D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.exe
 D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.pdb
+D:\M1\S8\Plateforme .NET\projet\Projet_2025_1\obj\Debug\Projet_2025_1.csproj.CopyComplete

@@ -14,7 +14,7 @@ namespace Projet_2025_1
         {
             InitializeComponent();
 
-            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;Pwd=123456";
+            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;Pwd=";
             _tagRepository = new TagRepository(connectionString);
 
             btnSearch.Click += BtnSearch_Click;

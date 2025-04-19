@@ -30,7 +30,7 @@ namespace Projet_2025_1
 
             this.treeViewTags.NodeMouseDoubleClick += treeViewTags_NodeMouseDoubleClick;
 
-            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;Pwd=123456";
+            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;Pwd=";
             _tagRepository = new TagRepository(connectionString);
         }
 
@@ -131,20 +131,7 @@ namespace Projet_2025_1
                 if (_tagRepository.IsTagNameUnique(parentId, newTagName))
                 {
                     int newTagId = _tagRepository.InsertTag(parentId, newTagName);
-                    TreeNode newNode = new TreeNode(newTagName)
-                    {
-                        Tag = newTagId
-                    };
-
-                    if (parentId == null)
-                    {
-                        treeViewTags.Nodes[0].Nodes.Add(newNode);
-                    }
-                    else
-                    {
-                        selectedNode.Nodes.Add(newNode);
-                        selectedNode.Expand();
-                    }
+                    LoadTagsFromDatabase();
                 }
                 else
                 {
@@ -162,6 +149,21 @@ namespace Projet_2025_1
 
         private void btnDeleteTag_Click(object sender, EventArgs e)
         {
+            TreeNode node = treeViewTags.SelectedNode;
+            if (node == null)
+            {
+                MessageBox.Show("Veuillez d'abord sélectionner une balise！",
+                                "indice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (node.Tag == null)
+            {
+                MessageBox.Show("Le nœud racine virtuel ne peut pas être supprimé。",
+                                "erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (treeViewTags.SelectedNode != null)
             {
                 var confirm = MessageBox.Show("Êtes-vous sûr de vouloir supprimer la balise sélectionnée et toutes ses sous-balises ?",
@@ -175,11 +177,11 @@ namespace Projet_2025_1
             }
             else
             {
-                MessageBox.Show("请先选择一个标签！", "提示",
+                MessageBox.Show("Veuillez d'abord sélectionner une balise！", "indice",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
+        
         private void btnEditTag_Click(object sender, EventArgs e)
         {
             if (treeViewTags.SelectedNode != null)
@@ -192,10 +194,13 @@ namespace Projet_2025_1
                 {
                     int currentTagId = (int)treeViewTags.SelectedNode.Tag;
                     int? parentId = null;
-                    if (treeViewTags.SelectedNode.Parent != null)
+
+                    if (treeViewTags.SelectedNode.Parent != null &&
+                        treeViewTags.SelectedNode.Parent.Tag != null)
                     {
-                        parentId = (int)treeViewTags.SelectedNode.Parent.Tag;
+                        parentId = Convert.ToInt32(treeViewTags.SelectedNode.Parent.Tag);
                     }
+
 
                     if (_tagRepository.IsTagNameUnique(parentId, newTagName, currentTagId))
                     {
@@ -207,6 +212,7 @@ namespace Projet_2025_1
                         MessageBox.Show("Le nom de la balise existe déjà (nom en double au même niveau), veuillez le saisir à nouveau ! ",
                                         "erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    
                 }
                 else
                 {
@@ -220,5 +226,8 @@ namespace Projet_2025_1
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        
+        
+
     }
 }
