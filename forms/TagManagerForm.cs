@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Projet_2025_1; // 引用新的文件
-using MySql.Data.MySqlClient; // 如果需要 MySQL 连接
 
 namespace Projet_2025_1
 {
@@ -13,11 +10,13 @@ namespace Projet_2025_1
     {
         /// <summary>
         /// 数据库访问仓储
+        /// Référentiel d'accès à la base de données
         /// </summary>
         private TagRepository _tagRepository;
 
         /// <summary>
         /// 标志位，表示窗体是否加载完毕
+        /// Drapeau indiquant si le formulaire a été chargé
         /// </summary>
         private bool _isFormLoaded = false;
 
@@ -25,17 +24,13 @@ namespace Projet_2025_1
         {
             InitializeComponent();
 
-            // 移除设计器可能自动加的 AfterSelect 绑定
             this.treeViewTags.AfterSelect -= treeViewTags_AfterSelect;
 
-            // 绑定窗体的 Load 事件
             this.Load += TagManagerForm_Load;
 
-            // 绑定双击事件
             this.treeViewTags.NodeMouseDoubleClick += treeViewTags_NodeMouseDoubleClick;
 
-            // 设置数据库连接字符串（示例，仅供参考）
-            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;";
+            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;Pwd=123456";
             _tagRepository = new TagRepository(connectionString);
         }
 
@@ -51,14 +46,12 @@ namespace Projet_2025_1
             treeViewTags.BeginUpdate();
             treeViewTags.Nodes.Clear();
 
-            // 添加虚拟根节点
             TreeNode virtualRootNode = new TreeNode("root")
             {
-                Tag = null // 虚拟根节点的 Tag 为空
+                Tag = null
             };
             treeViewTags.Nodes.Add(virtualRootNode);
 
-            // 加载真实的标签
             List<Tag> allTags = _tagRepository.GetAllTags();
             var rootTags = allTags.Where(t => t.ParentId == null).ToList();
             foreach (var rootTag in rootTags)
@@ -93,10 +86,7 @@ namespace Projet_2025_1
 
         private void treeViewTags_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            // 不再显示路径信息的弹窗
             if (!_isFormLoaded || treeViewTags.SelectedNode == null) return;
-
-            // 可以根据需要在这里添加单击时的逻辑
         }
 
         private void treeViewTags_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -104,7 +94,7 @@ namespace Projet_2025_1
             if (e.Node != null)
             {
                 string path = GetFullPath(e.Node);
-                MessageBox.Show($"当前选中标签的路径是：{path}", "标签信息",
+                MessageBox.Show($"Le chemin de la balise actuellement sélectionnée est : {path}", "Informations sur les balises",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -124,51 +114,47 @@ namespace Projet_2025_1
 
         private void btnAddTag_Click(object sender, EventArgs e)
         {
-            // 提示用户输入新标签名称
             string newTagName = Microsoft.VisualBasic.Interaction.InputBox(
-                "请输入新标签名称：", "添加标签", "");
+                "Veuillez saisir un nouveau nom d'étiquette : ", "Ajouter des balises", "");
 
             if (!string.IsNullOrEmpty(newTagName))
             {
-                TreeNode selectedNode = treeViewTags.SelectedNode; // 当前选中的节点
+                TreeNode selectedNode = treeViewTags.SelectedNode;
                 int? parentId = null;
 
-                // 如果选中了虚拟根节点，则将新标签设置为顶级标签
-                if (selectedNode != null && selectedNode.Text != "新建顶级标签")
+                if (selectedNode != null && selectedNode.Text != "Créer une nouvelle balise de niveau supérieur")
                 {
-                    parentId = (int)selectedNode.Tag;
+                    parentId = selectedNode.Tag == null ? (int?)null : (int)selectedNode.Tag;
+
                 }
 
-                // 检查标签名称是否唯一
                 if (_tagRepository.IsTagNameUnique(parentId, newTagName))
                 {
-                    // 插入新标签
                     int newTagId = _tagRepository.InsertTag(parentId, newTagName);
                     TreeNode newNode = new TreeNode(newTagName)
                     {
                         Tag = newTagId
                     };
 
-                    // 如果选中了虚拟根节点或未选中任何节点，则添加为顶级标签
                     if (parentId == null)
                     {
-                        treeViewTags.Nodes[0].Nodes.Add(newNode); // 添加到虚拟根节点下
+                        treeViewTags.Nodes[0].Nodes.Add(newNode);
                     }
                     else
                     {
                         selectedNode.Nodes.Add(newNode);
-                        selectedNode.Expand(); // 展开父节点以显示子节点
+                        selectedNode.Expand();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("该标签名称已存在（同级重名），请重新输入！", "错误",
+                    MessageBox.Show("Le nom de la balise existe déjà (nom en double au même niveau), veuillez le saisir à nouveau !", "erreur",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("标签名称不能为空！", "错误",
+                MessageBox.Show("Le nom de la balise ne peut pas être vide !", "erreur",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -178,8 +164,8 @@ namespace Projet_2025_1
         {
             if (treeViewTags.SelectedNode != null)
             {
-                var confirm = MessageBox.Show("确认删除选中的标签及其所有子标签吗？",
-                    "确认删除", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                var confirm = MessageBox.Show("Êtes-vous sûr de vouloir supprimer la balise sélectionnée et toutes ses sous-balises ?",
+                    "Confirmer la suppression", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirm == DialogResult.Yes)
                 {
                     int tagId = (int)treeViewTags.SelectedNode.Tag;
@@ -200,7 +186,7 @@ namespace Projet_2025_1
             {
                 string oldTagName = treeViewTags.SelectedNode.Text;
                 string newTagName = Microsoft.VisualBasic.Interaction.InputBox(
-                    "请输入新的标签名称：", "修改标签", oldTagName);
+                    "Veuillez d'abord sélectionner un tag ： ", "Modifier les balises", oldTagName);
 
                 if (!string.IsNullOrEmpty(newTagName))
                 {
@@ -218,19 +204,19 @@ namespace Projet_2025_1
                     }
                     else
                     {
-                        MessageBox.Show("该标签名称已存在（同级重名），请重新输入！",
-                                        "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Le nom de la balise existe déjà (nom en double au même niveau), veuillez le saisir à nouveau ! ",
+                                        "erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("标签名称不能为空！", "错误",
+                    MessageBox.Show("Le nom de la balise ne peut pas être vide！", "erreur",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("请先选择一个标签！", "提示",
+                MessageBox.Show("Veuillez d'abord sélectionner une balise！", "indice",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

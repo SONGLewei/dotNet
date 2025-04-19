@@ -14,19 +14,17 @@ namespace Projet_2025_1
         {
             InitializeComponent();
 
-            // 设置数据库连接字符串
-            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;";
+            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;Pwd=123456";
             _tagRepository = new TagRepository(connectionString);
 
-            // 按钮点击事件绑定
             btnSearch.Click += BtnSearch_Click;
 
-            // 图片列表双击事件绑定
             listBoxFilteredImages.MouseDoubleClick += ListBoxFilteredImages_MouseDoubleClick;
         }
 
         /// <summary>
         /// 搜索按钮点击事件
+        /// Événement de clic sur le bouton de recherche
         /// </summary>
         private void BtnSearch_Click(object sender, EventArgs e)
         {
@@ -34,18 +32,16 @@ namespace Projet_2025_1
 
             if (string.IsNullOrEmpty(tagName))
             {
-                MessageBox.Show("请输入要搜索的标签名称！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Veuillez saisir le nom du tag pour rechercher !", "indice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            // 获取与标签关联的图片列表
             var filteredImages = _tagRepository.GetImagesByTag(tagName);
 
-            // 更新 ListBox
             listBoxFilteredImages.Items.Clear();
             if (filteredImages.Count == 0)
             {
-                MessageBox.Show("未找到与该标签关联的图片！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Aucune image n'a été trouvée associée à cette balise !", "indice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -63,6 +59,7 @@ namespace Projet_2025_1
 
         /// <summary>
         /// 双击图片列表中的图片以预览
+        /// Double-cliquez sur une image dans la liste des images pour la prévisualiser
         /// </summary>
         private void ListBoxFilteredImages_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -72,13 +69,13 @@ namespace Projet_2025_1
                 dynamic selectedItem = listBoxFilteredImages.Items[index];
                 string filePath = selectedItem.FilePath;
 
-                // 显示图片预览
                 DisplayImagePreview(filePath);
             }
         }
 
         /// <summary>
         /// 显示图片预览
+        /// Afficher l'aperçu de l'image
         /// </summary>
         private void DisplayImagePreview(string filePath)
         {
@@ -92,12 +89,12 @@ namespace Projet_2025_1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"无法加载图片：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Impossible de charger l'image :{ex.Message}", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("文件不存在，请检查路径！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Le fichier n'existe pas, veuillez vérifier le chemin !", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

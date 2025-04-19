@@ -16,12 +16,10 @@ namespace Projet_2025_1
         {
             InitializeComponent();
 
-            // 设置数据库连接字符串
-            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;";
+            string connectionString = "Server=127.0.0.1;Port=3306;Database=tags_images;Uid=root;Pwd=123456";
             _imageRepository = new ImageRepository(connectionString);
             _tagRepository = new TagRepository(connectionString);
 
-            // 绑定窗体事件
             this.Load += ImageManagerForm_Load;
 
             this.btnUpload.Click -= btnUpload_Click;
@@ -32,12 +30,12 @@ namespace Projet_2025_1
             this.btnAssignTag.Click += btnAssignTag_Click;
             this.btnRemoveTag.Click += btnRemoveTag_Click;
 
-            // 绑定图片列表选择事件
             this.listBoxImages.SelectedIndexChanged += listBoxImages_SelectedIndexChanged;
         }
 
         /// <summary>
         /// 窗体加载事件
+        /// Événement de chargement de formulaire
         /// </summary>
         private void ImageManagerForm_Load(object sender, EventArgs e)
         {
@@ -46,38 +44,35 @@ namespace Projet_2025_1
 
         /// <summary>
         /// 加载图片列表
+        /// Chargement de la liste d'images
         /// </summary>
         private void LoadImages()
         {
-            // 清空现有项
             listBoxImages.Items.Clear();
 
-            // 从数据库获取图片列表
             var images = _imageRepository.GetAllImages();
 
             foreach (var image in images)
             {
-                // 显示文件名而不是完整路径
                 var listItem = new
                 {
-                    FileName = Path.GetFileName(image.FilePath), // 文件名
-                    FilePath = image.FilePath,                  // 完整路径
+                    FileName = Path.GetFileName(image.FilePath),
+                    FilePath = image.FilePath,
                     Id = image.Id
                 };
 
-                // 检查是否已存在相同文件名
                 if (!listBoxImages.Items.Cast<dynamic>().Any(item => item.FileName == listItem.FileName))
                 {
                     listBoxImages.Items.Add(listItem);
                 }
             }
 
-            // 指定 ListBox 显示的内容为文件名
             listBoxImages.DisplayMember = "FileName";
         }
 
         /// <summary>
         /// 上传图片按钮事件
+        /// Événement du bouton de téléchargement d'image
         /// </summary>
         private void btnUpload_Click(object sender, EventArgs e)
         {
@@ -89,20 +84,18 @@ namespace Projet_2025_1
                     string filePath = openFileDialog.FileName;
                     string fileName = Path.GetFileName(filePath);
 
-                    // 检查是否已存在相同文件名
                     if (listBoxImages.Items.Cast<dynamic>().Any(item => item.FileName == fileName))
                     {
-                        MessageBox.Show("文件名已存在，请选择不同的文件或重命名后再上传！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Le nom du fichier existe déjà, veuillez sélectionner un fichier différent ou le renommer avant de le télécharger !", "indice", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
 
-                    // 插入图片记录到数据库
                     int imageId = _imageRepository.InsertImage(filePath);
 
                     var listItem = new
                     {
-                        FileName = fileName, // 文件名
-                        FilePath = filePath, // 完整路径
+                        FileName = fileName,
+                        FilePath = filePath,
                         Id = imageId
                     };
 
@@ -113,6 +106,7 @@ namespace Projet_2025_1
 
         /// <summary>
         /// 图片列表选择事件
+        /// Événement de sélection de liste d'images
         /// </summary>
         private void listBoxImages_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -122,16 +116,15 @@ namespace Projet_2025_1
                 int imageId = selectedItem.Id;
                 string filePath = selectedItem.FilePath;
 
-                // 显示图片预览
                 DisplayImagePreview(filePath);
 
-                // 加载图片的标签
                 LoadImageTags(imageId);
             }
         }
 
         /// <summary>
         /// 显示图片预览
+        /// Afficher l'aperçu de l'image
         /// </summary>
         private void DisplayImagePreview(string filePath)
         {
@@ -139,30 +132,29 @@ namespace Projet_2025_1
             {
                 try
                 {
-                    pictureBoxPreview.Image?.Dispose(); // 避免文件锁定问题
+                    pictureBoxPreview.Image?.Dispose();
                     pictureBoxPreview.Image = System.Drawing.Image.FromFile(filePath);
                     pictureBoxPreview.SizeMode = PictureBoxSizeMode.Zoom;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"无法加载图片：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Impossible de charger l'image :{ex.Message}", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("文件不存在，请检查路径！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Le fichier n'existe pas, veuillez vérifier le chemin !", "erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
         /// 加载图片关联的标签
+        /// Charger les balises associées à l'image
         /// </summary>
         private void LoadImageTags(int imageId)
         {
-            // 清空现有项
             listBoxImageTags.Items.Clear();
 
-            // 获取图片关联的标签
             var tags = _tagRepository.GetTagsForImage(imageId);
             foreach (var tag in tags)
             {
@@ -172,6 +164,7 @@ namespace Projet_2025_1
 
         /// <summary>
         /// 分配标签按钮事件
+        /// Attribution d'événements de bouton d'étiquette
         /// </summary>
         private void btnAssignTag_Click(object sender, EventArgs e)
         {
@@ -181,7 +174,7 @@ namespace Projet_2025_1
                 int imageId = selectedImage.Id;
 
                 string newTag = Microsoft.VisualBasic.Interaction.InputBox(
-                    "请输入要分配的标签：", "分配标签", "");
+                    "Veuillez saisir l'étiquette que vous souhaitez attribuer : ", "Attribution de balises", "");
                 if (!string.IsNullOrEmpty(newTag))
                 {
                     int tagId = _tagRepository.GetOrCreateTag(newTag);
@@ -191,12 +184,13 @@ namespace Projet_2025_1
             }
             else
             {
-                MessageBox.Show("请先选择一张图片！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Veuillez d'abord sélectionner une image !", "indice", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         /// <summary>
         /// 移除标签按钮事件
+        /// Supprimer l'événement du bouton d'étiquette
         /// </summary>
         private void btnRemoveTag_Click(object sender, EventArgs e)
         {
@@ -217,7 +211,7 @@ namespace Projet_2025_1
             }
             else
             {
-                MessageBox.Show("请先选择一张图片和一个标签！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Veuillez d'abord sélectionner une image et un tag !", "indice", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -232,14 +226,14 @@ namespace Projet_2025_1
                 listBoxImages.Items.Remove(selectedImage);
                 _imageRepository.DeleteImage(imageId);
 
-                MessageBox.Show("图片及其关联标签已成功删除！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("L'image et ses balises associées ont été supprimées avec succès !", "indice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 pictureBoxPreview.Image = null;
                 listBoxImageTags.Items.Clear();
             }
             else
             {
-                MessageBox.Show("请先选择一张图片！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Veuillez d'abord sélectionner une image !", "indice", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
